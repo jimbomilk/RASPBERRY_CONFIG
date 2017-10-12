@@ -10,7 +10,7 @@
     $iwkRefreshTimeout = (int)($iwkRefreshTimeout/60/1000);
 
     // Screen Location
-    $iwkScreenLocation = file_get_contents("/iwk/iwk.screenLocation");
+    $iwkScreenLocation = (int)file_get_contents("/iwk/iwk.screenLocation");
 
     // Reload timeout.
     $iwkPageReloadTimeout = (int)file_get_contents("/iwk/iwk.strictKioskReloadPageTimer");

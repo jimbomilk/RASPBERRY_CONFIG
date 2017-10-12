@@ -143,8 +143,9 @@ switch ($target)
         if ($MODIFY_ENABLED) 
             {
             Misc::setStrickKioskMode($_GET['url'],$_GET['token'],$_GET['timeout'],$_GET['cache'],$_GET['keyboard'],$_GET['pageReload'],$_GET['haltAt'],$_GET['blankingTime'],$_GET['disableInput'],$_GET['proxy']);
-            Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])));
+
             }
+        Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])));
         break;
 
 
