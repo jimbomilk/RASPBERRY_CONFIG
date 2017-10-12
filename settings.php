@@ -9,6 +9,9 @@
     $iwkRefreshTimeout = file_get_contents("/iwk/iwk.refreshTimeout");
     $iwkRefreshTimeout = (int)($iwkRefreshTimeout/60/1000);
 
+    // Screen Location
+    $iwkScreenLocation = file_get_contents("/iwk/iwk.screenLocation");
+
     // Reload timeout.
     $iwkPageReloadTimeout = (int)file_get_contents("/iwk/iwk.strictKioskReloadPageTimer");
 
@@ -311,6 +314,8 @@
             var skmDisableAllInput = document.getElementById('skmDisableAllInput').checked;
             var skmAddMacAddress = document.getElementById('skmAddMacAddress').checked;
 
+            var skmScreenLocation = document.getElementById('skmScreenLocation').value;
+
             if (directBoot) var directStart = "y";
             else var directStart = "n";
 
@@ -326,7 +331,7 @@
             if (skmAddMacAddress) var skmAddMacAddress = "on";
             else var skmAddMacAddress = "off";
 
-            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy)+"&unlockPwd="+encodeURIComponent(unlockpwd);
+            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy)+"&unlockPwd="+encodeURIComponent(unlockpwd)+"&screenLocation="+skmScreenLocation;
 
             dojo.xhr("GET", {
                 url: uri,
@@ -373,7 +378,7 @@
                                  <!-- Language -->
                                  <div class="title">
                                      <img src="Images/Button-empathy-icon.png" style="vertical-align:middle; padding-right:10px;">
-                                     <strong>Localización y teclado</strong>
+                                     <strong>Localización</strong>
                                  </div>
                                  <div style="margin-bottom:20px;">
                                      <p>
@@ -391,6 +396,9 @@
                                              <option value="es"> Spanish (default)</option>
                                         </select>
                                      </p>
+                                     <strong>Lugar de la pantalla</strong>:
+                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:15px;" value="<?php echo $iwkScreenLocation;?>">;
+
                                  </div>
 
                                  <!-- Video -->

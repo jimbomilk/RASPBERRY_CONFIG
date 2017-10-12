@@ -137,7 +137,24 @@ class Misc
         }
 
 
+    public static function changeScreenLocation($newLocation)
+    {
+        $iwkScreenLocation = "/iwk/iwk.screenLocation";
+        $pathConfig = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
 
+        if ($newLocation !== $iwkScreenLocation)
+        {
+            // Persistencia
+            Utils::writeFile("/iwk/iwk.screenLocation",trim($newLocation),"777");
+            // Configuracion local
+            $jsonString = file_get_contents($pathConfig);
+            $data = json_decode($jsonString, true);
+            $data['location'] = 'location'.$newLocation;
+            $newJsonString = json_encode($data);
+            file_put_contents($pathConfig, $newJsonString);
+
+        }
+    }
 
     public static function getAvailableResolutions() /* String */
         {
