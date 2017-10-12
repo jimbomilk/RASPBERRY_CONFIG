@@ -396,8 +396,8 @@
                                              <option value="es"> Spanish (default)</option>
                                         </select>
                                      </p>
-                                     <strong>Lugar de la pantalla</strong>:
-                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:40px;" value="<?php echo $iwkScreenLocation;?>">
+                                     <strong>Código de pantalla</strong>:
+                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:140px;" value="<?php echo $iwkScreenLocation;?>">
 
                                  </div>
 
