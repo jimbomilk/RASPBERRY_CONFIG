@@ -1,0 +1,27 @@
+CREAR LA IMAGEN DEL 
+
+1. Copiamos la ISO con el Win32DiskImager
+
+2. Iniciamos el sistema : user:pi /pass: live  y despues sudo -i para tener derechos de admininistrador
+
+3. Ajusta fecha y hora: para ello lo más rápido es apuntar a un servidor nttp (desde SSH): 
+	ntpdate 0.es.pool.ntp.org 
+
+4. Adaptar pantalla a 1920x1080p , modifificando el /boot/config.txt:
+	disable_overscan=1
+	hdmi_group=1
+	hdmi_mode=16 or hdmi_mode=82
+5. Espadir el sistema de ficheros, instalando raspi-config:
+	Instalacion: apt-get update && apt-get install raspi-config
+	Ejecuta y sigue las instrucciones: raspi-config
+
+6. Borra los ficheros de configuración de la carpeta /iwk
+
+7. Descargar los archivos a /var/www/REMOTE_SKREEN
+
+
+
+
+
+
+
