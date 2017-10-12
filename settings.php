@@ -397,7 +397,7 @@
                                         </select>
                                      </p>
                                      <strong>Lugar de la pantalla</strong>:
-                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:15px;" value="<?php echo $iwkScreenLocation;?>">;
+                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:40px;" value="<?php echo $iwkScreenLocation;?>">
 
                                  </div>
 
