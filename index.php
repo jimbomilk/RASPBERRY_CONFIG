@@ -10,12 +10,13 @@ else $passwordDisabled = false;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Raspberry Digital Signage - settings page</title>
+    <title>Addmeetoo Digital Signage - settings page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="Author" content="ing. Marco Buratto, ing.marcoburatto@gmail.com">
+    <meta name="Author" content="JMGCG">
 
     <link type="text/css" href="Styles/standard.css" rel="stylesheet">
     <link type="text/css" href="JavaScript/dojo/dijit/themes/tundra/tundra.css" rel="stylesheet">
+    <link type="text/css" href="JavaScript/dojo/dijit/themes/soria/soria.css" rel="stylesheet">
     <link type="text/css" href="JavaScript/dojo/dojox/grid/resources/tundraGrid.css" rel="stylesheet">
 
     <style>
