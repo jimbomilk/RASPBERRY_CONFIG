@@ -139,7 +139,7 @@ class Misc
 
     public static function changeScreenLocation($newLocation)
     {
-        $iwkScreenLocation = "/iwk/iwk.screenLocation";
+        $iwkScreenLocation = file_get_contents("/iwk/iwk.screenLocation");
         $pathConfig = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
 
         if ($newLocation !== $iwkScreenLocation)
@@ -154,6 +154,7 @@ class Misc
             $newJsonString = json_encode($data);
             Utils::writeFile("/iwk/iwk.log2",$newJsonString,"777");
             file_put_contents($pathConfig, $newJsonString);
+            shell_exec("sleep 1; sudo reboot");
 
         }
     }
