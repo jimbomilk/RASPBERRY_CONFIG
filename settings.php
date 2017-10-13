@@ -338,11 +338,12 @@
                 preventCache: true,
                 load: function(data,args)
                     {
+                        alert(data);
                     if (data!="")
                         console.log(data);
                     },
                 timeout: 30000,
-                error: function(error,args) { ; }
+                error: function(error,args) { alert(error); }
                 });
             }
 

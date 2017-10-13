@@ -146,6 +146,7 @@ class Misc
         // Configuracion local
         $jsonString = file_get_contents($pathConfig);
         $data = json_decode($jsonString, true);
+
         Utils::writeFile("/iwk/iwk.log1",$jsonString,"777");
         $data->{'location'} = 'location'.$newLocation;
         $newJsonString = json_encode($data);
