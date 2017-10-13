@@ -145,11 +145,10 @@ class Misc
         Utils::writeFile("/iwk/iwk.screenLocation",trim($newLocation),"777");
         // Configuracion local
         $jsonString = file_get_contents($pathConfig);
-        echo "/n path:".$pathConfig;
-        echo "/n file:.".$jsonString;
+        echo "/n file:".$jsonString;
 
         $data = json_decode($jsonString, true);
-        echo "/n json decode:.".$data;
+        echo "/n json decode:".$data;
 
         //Utils::writeFile("/iwk/iwk.log1",$jsonString,"777");
         $data->{'location'} = 'location'.$newLocation;
