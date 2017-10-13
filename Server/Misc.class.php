@@ -149,7 +149,7 @@ class Misc
             // Configuracion local
             $jsonString = file_get_contents($pathConfig);
             $data = json_decode($jsonString, true);
-            $data['location'] = 'location'.$newLocation;
+            $data->{'location'} = 'location'.$newLocation;
             $newJsonString = json_encode($data);
             file_put_contents($pathConfig, $newJsonString);
 
