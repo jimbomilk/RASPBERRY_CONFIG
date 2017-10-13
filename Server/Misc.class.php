@@ -143,6 +143,7 @@ class Misc
         ini_set('display_errors', '1');
         $pathConfig = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
 
+        shell_exec("chmod 777 ".$pathConfig);
         // Persistencia
         Utils::writeFile("/iwk/iwk.screenLocation",trim($newLocation),"777");
         // Configuracion local
@@ -151,6 +152,7 @@ class Misc
         $data['location'] = 'location'.$newLocation;
         $newJsonString = json_encode($data);
         file_put_contents($pathConfig, $newJsonString);
+        shell_exec("chmod 750 ".$pathConfig);
         return true;
     }
 
