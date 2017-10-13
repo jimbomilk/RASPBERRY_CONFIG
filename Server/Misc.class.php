@@ -145,17 +145,11 @@ class Misc
         Utils::writeFile("/iwk/iwk.screenLocation",trim($newLocation),"777");
         // Configuracion local
         $jsonString = file_get_contents($pathConfig);
-        echo "/n file:".$jsonString;
-
         $data = json_decode($jsonString, true);
-        echo "/n json decode:".$data;
-
-        //Utils::writeFile("/iwk/iwk.log1",$jsonString,"777");
-        $data->{'location'} = 'location'.$newLocation;
+        $data['location'] = 'location'.$newLocation;
         $newJsonString = json_encode($data);
-        Utils::writeFile("/iwk/iwk.log2",$newJsonString,"777");
         file_put_contents($pathConfig, $newJsonString);
-
+        return true;
     }
 
     public static function getAvailableResolutions() /* String */
