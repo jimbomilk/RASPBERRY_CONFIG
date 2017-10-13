@@ -457,7 +457,7 @@
                                 </div>
 
                              <p style="margin-top:20px; margin-bottom:10px; height:26px; padding-top:10px; text-align:center;">
-                                 <a href="#." onClick="kioskModeSet(false); document.getelementById('kmsStart').style.display='none';"><span id="kmsStart" class="title" style="font-size:30px;">INICIAR ADDMEETOO</span></a>
+                                 <a href="#" onClick="kioskModeSet(false); document.getelementById('kmsStart').style.display='none';"><span id="kmsStart" class="title" style="font-size:30px;">INICIAR ADDMEETOO</span></a>
                              </p>
                          </div>
                      </div>
