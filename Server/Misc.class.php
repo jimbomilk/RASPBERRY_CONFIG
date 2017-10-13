@@ -139,6 +139,8 @@ class Misc
 
     public static function changeScreenLocation($newLocation)
     {
+        error_reporting(E_ALL);
+        ini_set('display_errors', '1');
         $pathConfig = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
 
         // Persistencia
