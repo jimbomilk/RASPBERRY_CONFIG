@@ -1,9 +1,9 @@
 <?php
 
 // Is password disabled?
-$unlockPwdHashSaved = trim(file_get_contents("/iwk/iwk.adminPasswd"));
-if ($unlockPwdHashSaved==trim(md5("no-passwd"))) $passwordDisabled = true;
-else $passwordDisabled = false;
+/*$unlockPwdHashSaved = trim(file_get_contents("/iwk/iwk.adminPasswd"));
+if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
+//else $passwordDisabled = false;
 
 // ************************************************************************************************ ?>
 

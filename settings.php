@@ -1,8 +1,10 @@
 <?php
 // Defining variables: load system persistent state.
+    //$c = 'c:';
+    $c='';
 
     // Strict kiosk URL.
-    $iwkStrictModeURL = trim(file_get_contents("/iwk/iwk.strictKioskBaseURL"));
+    $iwkStrictModeURL = trim(file_get_contents($c."/iwk/iwk.strictKioskBaseURL"));
     if (!$iwkStrictModeURL || $iwkStrictModeURL=="http://www.binaryemotions.com") $iwkStrictModeURL = "http://";
 
     // Refresh timeout.
@@ -32,10 +34,10 @@
     $iwkAppProxy = trim(file_get_contents("/iwk/iwk.applicationProxy"));
 
     // System halt time.
-    if (file_exists("/iwk/iwk.systemHaltAt")) $iwkSystemHaltContent = trim(file_get_contents("/iwk/iwk.systemHaltAt"));
+    /*if (file_exists("/iwk/iwk.systemHaltAt")) $iwkSystemHaltContent = trim(file_get_contents("/iwk/iwk.systemHaltAt"));
 
     if ($iwkSystemHaltContent) $iwkSystemHaltHour = $iwkSystemHaltContent;
-    else $iwkSystemHaltHour = 0;
+    else $iwkSystemHaltHour = 0;*/
 
     // Disable mouse/keyboard input.
     $iwkDisabledInput = "";
