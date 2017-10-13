@@ -148,6 +148,11 @@ switch ($target)
         Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])));
         break;
 
+    case "location":
+
+        Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])));
+        break;
+
 
     case "system-infos":
         Misc::viewSystemInformations();

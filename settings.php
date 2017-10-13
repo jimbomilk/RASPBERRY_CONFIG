@@ -291,7 +291,25 @@
                 });
             }
 
-        function kioskModeSet(/* Boolean */ directBoot)
+       function setLocation()
+       {
+           var location = document.getElementById('skmScreenLocation').value;
+
+           dojo.xhr("GET", {
+               url: "backend.php?target=location&screenLocation="+location,
+               preventCache: true,
+               load: function(data,args)
+               {
+                   if (data!="")
+                       console.log(data);
+               },
+               timeout: 30000,
+               error: function(error,args) { ; }
+           });
+       }
+
+
+       function kioskModeSet(/* Boolean */ directBoot)
             {
             var unlockpwd = document.getElementById('adminPassword').value;
             if (!directBoot)
@@ -331,7 +349,7 @@
             if (skmAddMacAddress) var skmAddMacAddress = "on";
             else var skmAddMacAddress = "off";
 
-            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy)+"&unlockPwd="+encodeURIComponent(unlockpwd)+"&screenLocation="+skmScreenLocation;
+            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy)+"&unlockPwd="+encodeURIComponent(unlockpwd);
 
             dojo.xhr("GET", {
                 url: uri,
@@ -397,12 +415,21 @@
                                              <option value="es"> Spanish (default)</option>
                                         </select>
                                      </p>
-                                     <strong>Código de pantalla</strong>:
-                                     <input type="number" name="screenLocation" id="skmScreenLocation" style="width:140px;" value="<?php echo $iwkScreenLocation;?>">
+
 
                                  </div>
 
-                                 <!-- Video -->
+                                 <div class="title">
+                                     <img src="Images/Button-empathy-icon.png" style="vertical-align:middle; padding-right:10px;">
+                                     <strong>Código de pantalla</strong>
+                                 </div>
+                                 <div style="margin-bottom:20px;">
+                                     <p>
+                                         <input type="number" name="screenLocation" id="skmScreenLocation" style="width:140px;" value="<?php echo $iwkScreenLocation;?>">
+                                         <a href="#." onClick="setLocation();">salvar</a>.
+                                 </div>
+
+                                         <!-- Video -->
                                  <div class="title">
                                      <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">
                                      <strong>Video</strong>
@@ -458,7 +485,7 @@
                                 </div>
 
                              <p style="margin-top:20px; margin-bottom:10px; height:26px; padding-top:10px; text-align:center;">
-                                 <a href="#" onClick="kioskModeSet(false); document.getelementById('kmsStart').style.display='none';"><span id="kmsStart" class="title" style="font-size:30px;">INICIAR ADDMEETOO</span></a>
+                                 <a href="#." onClick="kioskModeSet(false); document.getelementById('kmsStart').style.display='none';"><span id="kmsStart" class="title" style="font-size:30px;">INICIAR ADDMEETOO</span></a>
                              </p>
                          </div>
                      </div>
