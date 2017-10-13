@@ -150,7 +150,8 @@ switch ($target)
 
     case "location":
 
-        Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])));
+        if (Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])))) echo "Código actualizado.";
+        else echo "Error al actualizar el código.";
         break;
 
 
