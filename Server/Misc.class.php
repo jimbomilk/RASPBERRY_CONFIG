@@ -141,9 +141,11 @@ class Misc
     {
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
-        $pathConfig = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
+        // Its necesary to create it before!
+        $pathConfig = "/iwk/config.production.json";
+        $pathRemote = "/home/pi/REMOTE_SKREEN/src/assets/config.production.json";
 
-        shell_exec("chmod 777 ".$pathConfig);
+        shell_exec("sudo chmod 777 ".$pathConfig);
         // Persistencia
         Utils::writeFile("/iwk/iwk.screenLocation",trim($newLocation),"777");
         // Configuracion local
@@ -152,7 +154,8 @@ class Misc
         $data['location'] = 'location'.$newLocation;
         $newJsonString = json_encode($data);
         file_put_contents($pathConfig, $newJsonString);
-        shell_exec("chmod 750 ".$pathConfig);
+        shell_exec("sudo cp ".$pathConfig." ".$pathRemote);
+
         return true;
     }
 

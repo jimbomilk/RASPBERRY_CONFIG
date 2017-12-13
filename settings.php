@@ -384,7 +384,7 @@
     </script>
 </head>
 
-<body class="soria" style="height:92%;">
+<body class="tundra" style="height:92%;">
     <div id="header" style="height: 100px"></div>
     <div id="content" style="height:auto;">
         <div style="height:100%;">
