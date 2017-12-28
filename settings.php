@@ -357,7 +357,7 @@
                          <div style="margin-top:20px;">
                              <div>
                                  <!-- Language -->
-                                 <div>Ip: <?php print $_SERVER['HTTP_CLIENT_IP']; ?></div>
+                                 <div>Ip: <?php print getHostByName(getHostName()); ?></div>
                                  <div class="title">
                                      <img src="Images/Button-empathy-icon.png" style="vertical-align:middle; padding-right:10px;">
                                      <strong>Localización</strong>
