@@ -140,7 +140,7 @@ class Network
                     $ifContent .= "wpa-ssid \"".$netSSID."\"\n";
                     $ifContent .= "wpa-psk \"".$netPassword."\"\n\n";
                     }
-                else if ($netSecurity=="WEP")
+                else if (strpos($netSecurity,"WEP")!== false)
                     {
                     $ifContent .= "wireless-essid ".$netSSID."\n";
                     $ifContent .= "wireless-key ".$netPassword."\n\n";

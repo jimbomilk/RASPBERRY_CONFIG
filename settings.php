@@ -458,7 +458,7 @@
                                      <strong>Sonido</strong>
                                  </div>
                                  <div style="margin-bottom:20px;">
-                                     <p><strong>Volumen</strong>: <a href="#." onClick="soundSet();">open mixer</a>.</p>
+                                     <p><strong>Volumen</strong>: <a href="#." onClick="soundSet();">abrir mixer</a>.</p>
                                  </div>
 
                                  <!-- Browser -->
@@ -477,9 +477,9 @@
                                 <div style="display: none">
                                     <input id="skmPage" type="text" value="<?php echo $iwkStrictModeURL;?>" style="width:200px;"> &nbsp; | &nbsp;
                                     <input id="skmAddMacAddress" type="checkbox" style="width:15px;" <?php echo $iwkAddToken;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; this allows multiple deploys pointing just one target/server URL </span>
-                                    <input id="skmInactivityBeforeReload" type="text" value="<?php echo $iwkRefreshTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; values in minutes. Zero value (0) means never reset.
-                                    <input id="skmForcePageReload" type="text" value="<?php echo $iwkPageReloadTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; values in seconds. Zero value (0) means never reload. Min. value is 5s.
-                                    <input id="skmDisableAllInput" type="checkbox" style="width:15px;" <?php echo $iwkDisabledInput;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; setting will be applied after 2 miutes of kiosk display.</span>
+                                    <input id="skmInactivityBeforeReload" type="text" value="<?php echo $iwkRefreshTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; valor en minutos. Cero (0) significa que nunca se reinicia.
+                                    <input id="skmForcePageReload" type="text" value="<?php echo $iwkPageReloadTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; valor en segundos. Cero (0) significa que nunca se recarga. Valor mínimo es 5 seg.
+                                    <input id="skmDisableAllInput" type="checkbox" style="width:15px;" <?php echo $iwkDisabledInput;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; cambios se aplicarán 2 minutos después del inicio.</span>
                                     <input type="radio" name="virtualKeyboardRadio" id="virtualKeyboardSetOff" style="width:15px;" <?php echo $iwkVirtualKeyboardFileOff;?>> Off &nbsp;&nbsp;&nbsp;
                                     <input type="radio" name="virtualKeyboardRadio" id="virtualKeyboardSetOn" style="width:15px;" <?php echo $iwkVirtualKeyboardFileOn;?>> On
                                     <input id="skmHTTPProxy" type="text" value="<?php echo $iwkAppProxy;?>" style="width:200px;"> &nbsp; | &nbsp; do not use http://; always specify port. Example: 192.168.1.100:8080
@@ -493,14 +493,6 @@
                      </div>
                  </div>
              </div>
-
-
-
-
-        </div>
-
-        <div style="padding-top:10px; color:black; display:none">
-            <strong>&raquo; Unlock settings modify</strong>: <input id="adminPassword" type="password" value="<?php if ($passwordDisabled) echo "no-passwd";?>" style="padding-left:5px; height:20px; width:105px;" <?php if ($passwordDisabled) echo "disabled";?>> &nbsp; | &nbsp; only with admin password you can change system settings | <a href="#." onClick="modifyPassword(false);">change password</a> | <a href="#." onClick="modifyPassword(true);">do not use password</a>, anyone can change settings.
         </div>
 
     </div>

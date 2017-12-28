@@ -185,26 +185,26 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
              <!-- NETWORK TAB -->
              <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Network settings</strong>" refreshOnShow="false" style="padding:15px;">
                  <div id="networkLog" class="title">
-                     Please wait, trying to initialize network...
+                     Espere por favor, inicializando red...
                  </div>
 
                  <div id="networkTabLeft">
                      <!-- Wired network settings - DHCP/Static -->
                      <div class="title">
                          <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">
-                         <strong>Wired network (Ethernet)</strong>
+                         <strong>Red por cable (Ethernet)</strong>
                      </div>
                      <div style="margin-bottom:10px;">
-                         <p>Set <strong>wired network</strong>:</p>
+                         <p>Configura la<strong> red por cable</strong>:</p>
                          <p>
                              <ul>
                                  <li>
-                                     <a href="#." onClick="document.getElementById('staticIpTable').style.display='none'; networkSet('dhcp','','','','','','','');">use DHCP (default)</a> - system aquires network informations from your router/DHCP server;
+                                     <a href="#." onClick="document.getElementById('staticIpTable').style.display='none'; networkSet('init','','','','','','','');">reiniciar RED</a> - si no detecta redes WIFI intenta inicializar la red nuevamente.
                                  </li>
                              </ul>
                              <ul>
                                  <li>
-                                     <a href="#." onClick="document.getElementById('staticIpTable').style.display='block';">assing and use a static IP</a>.
+                                     <a href="#." onClick="document.getElementById('staticIpTable').style.display='block';">utilizar IP estática</a>.
                                  </li>
                              </ul>
                          </p>
@@ -241,21 +241,21 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                      <!-- Wireless network settings -->
                      <div class="title">
                          <img src="Images/Internet-icon.png" style="vertical-align:middle; padding-right:10px;">
-                         <strong>Wireless networks (802.11) near you</strong>
+                         <strong>Redes WIFI (802.11) detectadas</strong>
                      </div>
                      <div style="margin-bottom:10px;">
                          <ul>
                              <li>
-                                 <a href="#." onClick="wifiNetworkList('');">List wireless networks</a>:
+                                 <a href="#." onClick="wifiNetworkList('');">Lista de redes WIFI</a>:
                              </li>
                          </ul>
                          <div dojoType="dojox.grid.DataGrid" jsid="wifiNetworksGrid" id="wifiNetworksGrid" query="{ bssid: '*' }" rowsPerPage="5" style="width:95%; height:120px; margin-top:5px;" structure="layoutWifiNetworks"></div>
 
-                         <p>Please click on your network in the above list and input connection password:</p>
+                         <p>Por favor selecciona tu red e introduce tu clave de conexión:</p>
                          <p style="margin-top:20px;">
                              <input id="netSSID" type="text" style="width:150px;" readonly> &nbsp;
-                             <input id="netSecurity" type="text" style="width:50px;" readonly> &nbsp;
-                             <input id="netPassword" type="text" style="width:150px;"> &nbsp; | &nbsp;
+                             <input id="netSecurity" type="text" style="width:150px;" readonly> &nbsp;
+                             <input id="netPassword" type="text" style="width:250px;"> &nbsp; | &nbsp;
                              <a href="#." onClick="if (document.getElementById('netSSID').value!='') { networkSet('wifi','','','','',document.getElementById('netSSID').value,document.getElementById('netPassword').value,document.getElementById('netSecurity').value); }">connect</a>
                          </p>
                      </div>
@@ -263,9 +263,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
              </div>
         </div>
 
-        <div style="padding-top:10px; color:white;">
-            <strong>&raquo; Unlock settings modify</strong>: <input id="adminPassword" type="password" value="<?php if ($passwordDisabled) echo "no-passwd";?>" style="padding-left:5px; height:20px; width:105px;" <?php if ($passwordDisabled) echo "disabled";?>> &nbsp; | &nbsp; only with admin password you can change system settings.
-        </div>
+
     </div>
 </body>
 </html>
