@@ -179,7 +179,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
              <!-- NETWORK TAB -->
              <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Network settings</strong>" refreshOnShow="false" style="padding:15px;">
                  <div id="networkLog" class="title">
-                     Espere por favor, inicializando red...
+                     Espere por favor, inicializando red...<? $_SERVER['HTTP_CLIENT_IP'] ?>
                  </div>
 
                  <div id="networkTabLeft">

@@ -57,7 +57,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Raspberry Digital Signage - settings page</title>
+    <title>Addmeetoo - settings</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="Author" content="ing. Marco Buratto, ing.marcoburatto@gmail.com">
     <meta name="Comment" content="This is a dirty no-framework, js-in-pages quick and fast coding style.">
