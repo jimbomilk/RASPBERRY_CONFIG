@@ -311,7 +311,7 @@
             if (skmAddMacAddress) var skmAddMacAddress = "on";
             else var skmAddMacAddress = "off";
 
-            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy)+"&unlockPwd="+encodeURIComponent(unlockpwd);
+            var uri = "backend.php?target=strictKiosk&url="+encodeURIComponent(skmURL)+"&token="+skmAddMacAddress+"&directStart="+directStart+"&timeout="+skmTimeout+"&cache="+skmCache+"&keyboard="+skmVirtualKeyboard+"&pageReload="+skmPageTimeout+"&haltAt="+skmSystemHalt+"&blankingTime="+iwkScreenblankingTime+"&disableInput="+skmDisableAllInput+"&proxy="+encodeURIComponent(skmProxy);
 
             dojo.xhr("GET", {
                 url: uri,
