@@ -109,7 +109,7 @@
 
 
             dojo.xhr("GET", {
-                url: "backend.php?target=locale&lang="+lang+"&unlockPwd="+encodeURIComponent(unlockpwd),
+                url: "backend.php?target=locale&lang="+lang,
                 preventCache: true,
                 load: function(data,args)
                     {
@@ -149,7 +149,7 @@
 
 
                 dojo.xhr("GET", {
-                    url: "backend.php?target=video&action=changeResolution&w="+resolutionW+"&h="+resolutionH+"&unlockPwd="+encodeURIComponent(unlockpwd),
+                    url: "backend.php?target=video&action=changeResolution&w="+resolutionW+"&h="+resolutionH,
                     preventCache: true,
                     load: function(data,args)
                         {
@@ -167,7 +167,7 @@
 
 
             dojo.xhr("GET", {
-                url: "backend.php?target=sound&unlockPwd="+encodeURIComponent(unlockpwd),
+                url: "backend.php?target=sound,
                 preventCache: true,
                 load: function(data,args)
                     {
@@ -189,7 +189,7 @@
             if (newAdminPassword)
                 {
                 dojo.xhr("GET", {
-                    url: "backend.php?target=modifyPasword&newPassword="+encodeURIComponent(newAdminPassword)+"&unlockPwd="+encodeURIComponent(unlockpwd),
+                    url: "backend.php?target=modifyPasword",
                     preventCache: true,
                     load: function(data,args)
                         {
@@ -225,7 +225,7 @@
 
 
                 dojo.xhr("GET", {
-                    url: "backend.php?target=browser&action=makeHomePersistent&toggle="+toggle+"&unlockPwd="+unlockpwd,
+                    url: "backend.php?target=browser&action=makeHomePersistent&toggle="+toggle,
                     preventCache: true,
                     load: function(data,args)
                         {
@@ -250,7 +250,7 @@
             if (document.getElementById('videoRotationRadioReverse').checked) var rotation = "inverted";
 
             dojo.xhr("GET", {
-                url: "backend.php?target=video&action=rotate&rotation="+rotation+"&unlockPwd="+encodeURIComponent(unlockpwd),
+                url: "backend.php?target=video&action=rotate&rotation="+rotation,
                 preventCache: true,
                 load: function(data,args)
                     {
