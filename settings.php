@@ -106,13 +106,7 @@
         // XHR calls and others.
         function localeSet(/* String */ lang)
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
-            if (!unlockpwd) 
-                {
-                alert("In order to change settings, please enter unlock password. ");
-                document.getElementById('languageSelector').selectedIndex = 0;
-                return false;
-                }
+
 
             dojo.xhr("GET", {
                 url: "backend.php?target=locale&lang="+lang+"&unlockPwd="+encodeURIComponent(unlockpwd),
@@ -152,12 +146,7 @@
 
             if ((resolutionW>0) && (resolutionW>0))
                 {
-                var unlockpwd = document.getElementById('adminPassword').value;
-                if (!unlockpwd)
-                    {
-                    alert("In order to change settings, please enter unlock password. ");
-                    return false;
-                    }
+
 
                 dojo.xhr("GET", {
                     url: "backend.php?target=video&action=changeResolution&w="+resolutionW+"&h="+resolutionH+"&unlockPwd="+encodeURIComponent(unlockpwd),
@@ -175,12 +164,7 @@
 
         function soundSet()
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
-            if (!unlockpwd)
-                {
-                alert("In order to change settings, please enter unlock password. ");
-                return false;
-                }
+
 
             dojo.xhr("GET", {
                 url: "backend.php?target=sound&unlockPwd="+encodeURIComponent(unlockpwd),
@@ -197,12 +181,7 @@
 
         function modifyPassword(/* Boolean */ dontuse)
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
-            if (!unlockpwd)
-                {
-                alert("In order to change password, please enter the current admin password. ");
-                return false;
-                }
+
 
             if (!dontuse) var newAdminPassword = prompt("Insert new password"); // prompt for password.
             else var newAdminPassword = "no-passwd";
@@ -243,12 +222,7 @@
 
             if (confirm("PLEASE WAIT UNTIL SYSTEM RESTARTS, OPERATION MAY TAKE MINUTES."))
                 {
-                var unlockpwd = document.getElementById('adminPassword').value;
-                if (!unlockpwd)
-                    {
-                    alert("Please enter admin password, first. ");
-                    return false;
-                    }
+
 
                 dojo.xhr("GET", {
                     url: "backend.php?target=browser&action=makeHomePersistent&toggle="+toggle+"&unlockPwd="+unlockpwd,
@@ -266,12 +240,7 @@
 
         function videoRotationSet()
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
-            if (!unlockpwd)
-                {
-                alert("In order to change settings, please enter unlock password. ");
-                return false;
-                }
+
 
             if (!confirm("This will reboot system now, continue? ")) return true;
 
@@ -313,15 +282,10 @@
 
        function kioskModeSet(/* Boolean */ directBoot)
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
+
             if (!directBoot)
                 {
-                if (!unlockpwd)
-                    {
-                    alert("In order to change settings, please enter unlock password. ");
-                    return false;
-                    }
-                }
+
 
             var skmURL = document.getElementById('skmPage').value;
             var skmTimeout = document.getElementById('skmInactivityBeforeReload').value;
@@ -458,7 +422,7 @@
                                      <strong>Sonido</strong>
                                  </div>
                                  <div style="margin-bottom:20px;">
-                                     <p><strong>Volumen</strong>: <a href="#." onClick="soundSet();">abrir mixer</a>.</p>
+                                     <p><strong>Volumen</strong>: <a href="#." onClick="soundSet();">open mixer</a>.</p>
                                  </div>
 
                                  <!-- Browser -->
@@ -477,9 +441,9 @@
                                 <div style="display: none">
                                     <input id="skmPage" type="text" value="<?php echo $iwkStrictModeURL;?>" style="width:200px;"> &nbsp; | &nbsp;
                                     <input id="skmAddMacAddress" type="checkbox" style="width:15px;" <?php echo $iwkAddToken;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; this allows multiple deploys pointing just one target/server URL </span>
-                                    <input id="skmInactivityBeforeReload" type="text" value="<?php echo $iwkRefreshTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; valor en minutos. Cero (0) significa que nunca se reinicia.
-                                    <input id="skmForcePageReload" type="text" value="<?php echo $iwkPageReloadTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; valor en segundos. Cero (0) significa que nunca se recarga. Valor mínimo es 5 seg.
-                                    <input id="skmDisableAllInput" type="checkbox" style="width:15px;" <?php echo $iwkDisabledInput;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; cambios se aplicarán 2 minutos después del inicio.</span>
+                                    <input id="skmInactivityBeforeReload" type="text" value="<?php echo $iwkRefreshTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; values in minutes. Zero value (0) means never reset.
+                                    <input id="skmForcePageReload" type="text" value="<?php echo $iwkPageReloadTimeout;?>" style="width:200px;"> &nbsp; | &nbsp; values in seconds. Zero value (0) means never reload. Min. value is 5s.
+                                    <input id="skmDisableAllInput" type="checkbox" style="width:15px;" <?php echo $iwkDisabledInput;?>> <span style="margin-left:187px;"> &nbsp; | &nbsp; setting will be applied after 2 miutes of kiosk display.</span>
                                     <input type="radio" name="virtualKeyboardRadio" id="virtualKeyboardSetOff" style="width:15px;" <?php echo $iwkVirtualKeyboardFileOff;?>> Off &nbsp;&nbsp;&nbsp;
                                     <input type="radio" name="virtualKeyboardRadio" id="virtualKeyboardSetOn" style="width:15px;" <?php echo $iwkVirtualKeyboardFileOn;?>> On
                                     <input id="skmHTTPProxy" type="text" value="<?php echo $iwkAppProxy;?>" style="width:200px;"> &nbsp; | &nbsp; do not use http://; always specify port. Example: 192.168.1.100:8080
@@ -493,6 +457,7 @@
                      </div>
                  </div>
              </div>
+
         </div>
 
     </div>

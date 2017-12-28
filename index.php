@@ -107,12 +107,6 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
         function networkSet(/* String */ action, /* String */ ip, /* String */ mask, /* String */ gateway, /* String */ dns, /* String */ ssid, /* String */ password, /* String */ security)
             {
-            var unlockpwd = document.getElementById('adminPassword').value;
-            if (!unlockpwd)
-                {
-                alert("In order to change settings, please enter unlock password. ");
-                return false;
-                }
 
             waitingState("on");
             document.getElementById('networkLog').innerHTML = "Please wait, trying to initialize network...";
@@ -249,9 +243,9 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                                  <a href="#." onClick="wifiNetworkList('');">Lista de redes WIFI</a>:
                              </li>
                          </ul>
-                         <div dojoType="dojox.grid.DataGrid" jsid="wifiNetworksGrid" id="wifiNetworksGrid" query="{ bssid: '*' }" rowsPerPage="5" style="width:95%; height:120px; margin-top:5px;" structure="layoutWifiNetworks"></div>
+                         <div dojoType="dojox.grid.DataGrid" jsid="wifiNetworksGrid" id="wifiNetworksGrid" query="{ bssid: '*' }" rowsPerPage="5" style="width:95%; height:220px; margin-top:5px;" structure="layoutWifiNetworks"></div>
 
-                         <p>Por favor selecciona tu red e introduce tu clave de conexión:</p>
+                         <p>Por favor seleccione su red e introduzca su clave:</p>
                          <p style="margin-top:20px;">
                              <input id="netSSID" type="text" style="width:150px;" readonly> &nbsp;
                              <input id="netSecurity" type="text" style="width:150px;" readonly> &nbsp;
