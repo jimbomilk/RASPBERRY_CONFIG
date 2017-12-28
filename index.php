@@ -80,7 +80,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
             var store = new dojo.data.ItemFileWriteStore
                 ({
                 url: uri,
-                urlPreventCache: true,
+                urlPreventCache: true
                 });
 
             return store;
@@ -136,14 +136,9 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                     if (data!="")
                         {
                         document.getElementById('networkLog').innerHTML = data;
+                        document.getElementById('networkTabLeft').style.display = "none";
+                        window.setTimeout("document.location.href='settings.php';",8000);
 
-                        // Autostart on Internet connection OK, go to (other) settings page.
-                        if (Utils.strpos(data,"up and running")>0)
-                            {
-                            document.getElementById('networkTabLeft').style.display = "none";
-                            window.setTimeout("document.location.href='settings.php';",8000);
-                            }
-                        else waitingState("off");
                         }
                     },
                 timeout: 30000,
