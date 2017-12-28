@@ -357,7 +357,11 @@
                          <div style="margin-top:20px;">
                              <div>
                                  <!-- Language -->
-                                 <div>Ip: <?php print Network::get_client_ip();?></div>
+                                 <div>Ip: <?php
+                                     $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
+                                     $localIP = exec ($command);
+                                     echo $localIP; ?>
+                                 </div>
                                  <div class="title">
                                      <img src="Images/Button-empathy-icon.png" style="vertical-align:middle; padding-right:10px;">
                                      <strong>Localización</strong>
