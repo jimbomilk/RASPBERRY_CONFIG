@@ -186,7 +186,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                      <!-- Wired network settings - DHCP/Static -->
                      <div class="title">
                          <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">
-                         <strong>Red por cable (Ethernet)</strong>
+                         <strong>Red por cable</strong>
                      </div>
                      <div style="margin-bottom:10px;">
                          <p>Configura la<strong> red por cable</strong>:</p>
