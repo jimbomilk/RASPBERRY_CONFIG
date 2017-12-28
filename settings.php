@@ -283,10 +283,6 @@
        function kioskModeSet(/* Boolean */ directBoot)
             {
 
-            if (!directBoot)
-                {
-
-
             var skmURL = document.getElementById('skmPage').value;
             var skmTimeout = document.getElementById('skmInactivityBeforeReload').value;
             var skmPageTimeout = document.getElementById('skmForcePageReload').value;
