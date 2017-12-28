@@ -135,7 +135,7 @@ class Network
                 $ifContent .= "auto wlan0\nallow-hotplug wlan0\niface wlan0 inet dhcp\n";
 
                 // Common data.
-                if ($netSecurity=="WPA" || $netSecurity=="WPA2" || $netSecurity=="WPA 2")
+                if (strpos($netSecurity,"WPA") !== false)
                     {
                     $ifContent .= "wpa-ssid \"".$netSSID."\"\n";
                     $ifContent .= "wpa-psk \"".$netPassword."\"\n\n";
