@@ -109,7 +109,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
             {
 
             waitingState("on");
-            document.getElementById('networkLog').innerHTML = "Please wait, trying to initialize network...";
+            document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión...";
 
             dojo.xhr("GET", {
                 url: "backend.php?target=network&action="+action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd),
@@ -183,6 +183,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                  </div>
 
                  <div id="networkTabLeft">
+                     <div>Ip: <?php echo Network::get_client_ip();?></div>
                      <!-- Wired network settings - DHCP/Static -->
                      <div class="title">
                          <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">

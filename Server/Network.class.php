@@ -202,14 +202,14 @@ class Network
         // Check if net is up.
         if (trim(file_get_contents($networkConnectionFileEth))=="up" || trim(file_get_contents($networkConnectionFileWlan))=="up")
             {
-            $return .= "<strong>Network is up and running</strong>.<br><br>";
+            $return .= "<strong>La red está conectada</strong>.<br><br>";
 
             $ifConfigOutput = shell_exec("sudo ifconfig -a");
             $ifConfigOutput = str_replace("inet addr:","inet addr:<strong>",$ifConfigOutput);
             $ifConfigOutput = str_replace("Mask:","</strong>Mask:",$ifConfigOutput);
             $return .= "<br><span class='standard' style='color:#D00;'><strong>Kiosk mode will start with the following network settings</strong>.<br><br>If you want to change connection method, unplug network cable and reboot.<br>Your selected connection method will then presist across reboots. Default is DHCP.<br><br>".$ifConfigOutput."</span>";
             }
-        else $return .= "Internet connection is down! Try using another connection method.<br><br>";
+        else $return .= "La conexión a internet está caida! Pruebe a utilizar otro método de conexión.<br><br>";
 
         return $return;
         }
@@ -376,5 +376,30 @@ class Network
 
         Utils::writeFile($dhcClientConfigFile,$content,"");
         }
+
+
+    //Obtiene la IP del cliente
+    public static function get_client_ip()
+    {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if (getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if (getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if (getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if (getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if (getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+
     }
+
+
+}
 ?>
