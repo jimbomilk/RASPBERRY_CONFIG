@@ -178,7 +178,9 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                  </div>
 
                  <div id="networkTabLeft">
-                     <div>Ip: <?php echo Network::get_client_ip();?></div>
+                     <div>Ip: <?php $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
+                         $localIP = exec ($command);
+                         echo $localIP?></div>
                      <!-- Wired network settings - DHCP/Static -->
                      <div class="title">
                          <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">

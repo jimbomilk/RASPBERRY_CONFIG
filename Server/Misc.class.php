@@ -152,7 +152,12 @@ class Misc
         $jsonString = file_get_contents($pathConfig);
         $data = json_decode($jsonString, true);
         $data['location'] = 'location'.$newLocation;
-        $data['ip'] = Network::get_client_ip();
+
+        //Local IP
+        $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
+        $localIP = exec ($command);
+        $data['ip'] = $localIP;
+
         $newJsonString = json_encode($data);
         file_put_contents($pathConfig, $newJsonString);
         shell_exec("sudo cp ".$pathConfig." ".$pathRemote);
