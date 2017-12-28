@@ -193,7 +193,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                          <p>
                              <ul>
                                  <li>
-                                     <a href="#." onClick="document.getElementById('staticIpTable').style.display='none'; networkSet('init','','','','','','','');">reiniciar RED</a> - si no detecta redes WIFI intenta inicializar la red nuevamente.
+                                     <a href="#." onClick="networkInit();">reiniciar RED</a> - si no detecta redes WIFI intenta inicializar la red nuevamente.
                                  </li>
                              </ul>
                              <ul>
