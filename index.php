@@ -242,7 +242,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                      <div style="margin-bottom:10px;">
                          <ul>
                              <li>
-                                 <a href="#." onClick="wifiNetworkList();">Lista de redes WIFI</a>:
+                                 <a href="#." onClick="wifiNetworkList('');">Lista de redes WIFI</a>:
                              </li>
                          </ul>
                          <div dojoType="dojox.grid.DataGrid" jsid="wifiNetworksGrid" id="wifiNetworksGrid" query="{ bssid: '*' }" rowsPerPage="5" style="width:95%; height:220px; margin-top:5px;" structure="layoutWifiNetworks"></div>
