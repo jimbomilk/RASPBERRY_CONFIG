@@ -30,6 +30,7 @@ switch ($target)
     case "network":
         $action = strip_tags(trim($_GET['action']));
 
+        Utils::writeFile("/iwk/error.log","antes de...action:"+action,"777");
         if ($action=="wifi-list")
         {
             $json = new Services_JSON();
@@ -56,7 +57,7 @@ switch ($target)
         }
         else
         {
-            Utils::writeFile("/iwk/error.log","antes de...\n","777");
+
             $netIP = strip_tags(trim($_GET['netIP']));
             $netMask = strip_tags(trim($_GET['netMask']));
             $netGateway = strip_tags(trim($_GET['netGateway']));
