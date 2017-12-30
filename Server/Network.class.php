@@ -82,7 +82,7 @@ class Network
         $networkConnectionMethodPersistence = "/iwk/iwk.networkConnectionMethod";
         $networkInterfacePersistence = "/iwk/iwk.networkInterface";
 
-        Utils::writeFile($logFile,"antes de...\n","");
+        Utils::writeFile("/iwk/error.log","antes de...\n","777");
         self::__putInterfacesDown();
 
         Utils::writeFile($logFile,$action,"");
