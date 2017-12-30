@@ -31,7 +31,7 @@ switch ($target)
         $action = strip_tags(trim($_GET['action']));
 
         if ($action=="wifi-list")
-            {
+        {
             $json = new Services_JSON();
             $jsonString = "{identifier:'bssid',label:'bssid',items:[ ";
 
@@ -40,23 +40,23 @@ switch ($target)
 
             header("Content-Type: text/html; charset=UTF-8");
             echo substr($jsonString,0,strlen($jsonString)-1)." ]}";
-            }
+        }
         else if ($action=="view-network-hardware")
-            {
+        {
             $netHardware = Network::listAllInterfaces();
             print_r($netHardware);
-            }
+        }
         else if ($action=="info")
-            {
+        {
             echo str_replace("\n","<br>",Network::getNetworkInformations());
-            }
+        }
         else if ($action=="init")
-            {
+        {
             Network::initNetwork();
-            }
+        }
         else
-            {
-                Utils::writeFile("/iwk/error.log","antes de...\n","777");
+        {
+            Utils::writeFile("/iwk/error.log","antes de...\n","777");
             $netIP = strip_tags(trim($_GET['netIP']));
             $netMask = strip_tags(trim($_GET['netMask']));
             $netGateway = strip_tags(trim($_GET['netGateway']));
@@ -67,7 +67,7 @@ switch ($target)
             $netSecurity = strip_tags(trim($_GET['netSecurity']));
 
             Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
-            }
+        }
         break;
 
 
