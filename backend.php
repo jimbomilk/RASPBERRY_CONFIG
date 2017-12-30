@@ -13,9 +13,7 @@ $action ="";
 // **************************************************************************************************************************
 
 switch ($target)
-    {
-
-
+{
 
     case "locale":
             $language = strip_tags(trim($_GET['lang']));
@@ -55,22 +53,24 @@ switch ($target)
         {
             Network::initNetwork();
         }
-        else
-        {
-            Utils::writeFile("/iwk/error.log","dentro de...action:".$action,"777");
-            $netIP = strip_tags(trim($_GET['netIP']));
-            $netMask = strip_tags(trim($_GET['netMask']));
-            $netGateway = strip_tags(trim($_GET['netGateway']));
-            $netDNS = strip_tags(trim($_GET['netDNS']));
+    break;
 
-            $netSSID = strip_tags(trim($_GET['netSSID']));
-            $netPassword = strip_tags(trim($_GET['netPassword']));
-            $netSecurity = strip_tags(trim($_GET['netSecurity']));
-            Utils::writeFile("/iwk/error.log","despues de...action:".$action,"777");
+    case "connect":
+        $action = strip_tags(trim($_GET['action']));
+        Utils::writeFile("/iwk/error.log","dentro de...action:".$action,"777");
+        $netIP = strip_tags(trim($_GET['netIP']));
+        $netMask = strip_tags(trim($_GET['netMask']));
+        $netGateway = strip_tags(trim($_GET['netGateway']));
+        $netDNS = strip_tags(trim($_GET['netDNS']));
 
-            Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
-        }
-        break;
+        $netSSID = strip_tags(trim($_GET['netSSID']));
+        $netPassword = strip_tags(trim($_GET['netPassword']));
+        $netSecurity = strip_tags(trim($_GET['netSecurity']));
+        Utils::writeFile("/iwk/error.log","despues de...action:".$action,"777");
+
+        Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
+
+    break;
 
 
     case "video":
@@ -89,12 +89,12 @@ switch ($target)
             {
             Misc::videoRotate(strip_tags(trim($_GET['rotation'])));
             }
-        break;
+    break;
 
 
     case "sound":
         Misc::setSound();
-        break;
+    break;
 
 
     case "browser":
@@ -105,23 +105,23 @@ switch ($target)
         if ($action=="makeHomePersistent")
             Misc::makeBrowserHomePersistent($toggle);
 
-        break;
+    break;
 
 
     case "strictKiosk":
         Misc::setStrickKioskMode($_GET['url'],$_GET['token'],$_GET['timeout'],$_GET['cache'],$_GET['keyboard'],$_GET['pageReload'],$_GET['haltAt'],$_GET['blankingTime'],$_GET['disableInput'],$_GET['proxy']);
-        break;
+    break;
 
     case "location":
         if (Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])))) echo "Código actualizado.";
         else echo "Error al actualizar el código.";
-        break;
+    break;
 
 
     case "system-infos":
         Misc::viewSystemInformations();
-        break;
+    break;
 
-    }
+}
 
 ?>
