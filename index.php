@@ -109,7 +109,8 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
             {
 
             waitingState("on");
-            document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión...";
+            document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión...action:"+action+",ssid:"+ssid+",pass:"+password+",security:"+security;
+
 
             dojo.xhr("GET", {
                 url: "backend.php?target=network&action="+action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd),

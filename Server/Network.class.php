@@ -149,7 +149,7 @@ class Network
                     {
                     $ifContent .= "wireless-essid ".$netSSID."\n";
                     }
-                var_dump($ifContent);
+
 
                 Utils::writeFile($interfacesFile,$ifContent,"");
 
