@@ -8,7 +8,7 @@ function __autoload($className)
 
 $target = strip_tags(trim($_GET['target']));
 $action = strip_tags(trim($_GET['action']));
-Utils::addFile("/iwk/error.log","*** BACKEND *** target:".$target.", action:".$action,"777");
+Utils::addFile("/iwk/error.log","*** BACKEND *** target:".$target.", action:".$action."/n","777");
 
 // **************************************************************************************************************************
 
@@ -51,6 +51,7 @@ switch ($target)
         }
         else if ($action=="init")
         {
+            Utils::writeFile("/iwk/error.log","Date:".date('l jS \of F Y h:i:s A')."/n","777");
             Network::initNetwork();
         }
     break;
