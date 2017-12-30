@@ -7,8 +7,8 @@ function __autoload($className)
     }
 
 $target = strip_tags(trim($_GET['target']));
-$action ="";
-
+$action = strip_tags(trim($_GET['action']));
+Utils::addFile("/iwk/error.log","*** BACKEND *** target:".$target.", action:".$action,"777");
 
 // **************************************************************************************************************************
 
@@ -28,7 +28,7 @@ switch ($target)
     case "network":
         $action = strip_tags(trim($_GET['action']));
 
-        Utils::writeFile("/iwk/error.log","antes de...action:".$action,"777");
+
         if ($action=="wifi-list")
         {
             $json = new Services_JSON();
@@ -57,7 +57,7 @@ switch ($target)
 
     case "connect":
         $action = strip_tags(trim($_GET['action']));
-        Utils::writeFile("/iwk/error.log","dentro de...action:".$action,"777");
+
         $netIP = strip_tags(trim($_GET['netIP']));
         $netMask = strip_tags(trim($_GET['netMask']));
         $netGateway = strip_tags(trim($_GET['netGateway']));
@@ -66,7 +66,7 @@ switch ($target)
         $netSSID = strip_tags(trim($_GET['netSSID']));
         $netPassword = strip_tags(trim($_GET['netPassword']));
         $netSecurity = strip_tags(trim($_GET['netSecurity']));
-        Utils::writeFile("/iwk/error.log","despues de...action:".$action,"777");
+
 
         Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
 
@@ -82,7 +82,7 @@ switch ($target)
 
         if ($action=="changeResolution")
             {
-            echo Misc::changeResolution((int)$_GET['w'],(int)$_GET['h']);
+            Misc::changeResolution((int)$_GET['w'],(int)$_GET['h']);
             }
 
         if ($action=="rotate")
