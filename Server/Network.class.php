@@ -12,14 +12,67 @@ class Network
     // PUBLIC STATIC METHODS
     // ***************************************************************************************************************************
 
+
+    public static function resetNetwork() /* Void */
+    {
+
+            // Persistence files to look at.
+            $interfacesFilePersistence = "/iwk/interfaces_reset";
+            $dnsFilePersistence = "/iwk/resolv.conf";
+
+            $networkConnectionMethodPersistence = "/iwk/iwk.networkConnectionMethod";
+            if (file_exists($networkConnectionMethodPersistence) && is_readable($networkConnectionMethodPersistence) && filesize($networkConnectionMethodPersistence)>1)
+                $networkConnectionMethodPersistenceContent = trim(file_get_contents($networkConnectionMethodPersistence));
+            else $networkConnectionMethodPersistenceContent = "";
+
+            $networkInterfacePersistence = "/iwk/iwk.networkInterface";
+            if (file_exists($networkInterfacePersistence) && is_readable($networkInterfacePersistence) && filesize($networkInterfacePersistence)>1)
+                $networkInterfacePersistenceContent = trim(file_get_contents($networkInterfacePersistence));
+            else $networkInterfacePersistenceContent = "";
+
+            self::__putInterfacesDown();
+
+            if (!file_exists($interfacesFilePersistence))
+            {
+                // DHCP initialize.
+                self::setNetwork("dhcp","","","","","","","");
+            }
+            else if ($networkConnectionMethodPersistenceContent=="static")
+            {
+                // Static init.
+                shell_exec("cp -f ".$interfacesFilePersistence." /etc/network/interfaces");
+                shell_exec("cp -f ".$dnsFilePersistence." /etc/resolv.conf");
+
+                shell_exec("sudo /etc/init.d/network-manager stop; sleep 1");
+                shell_exec("sudo killall dhclient && sleep 1");
+                shell_exec("sudo ifup ".$networkInterfacePersistenceContent);
+            }
+            else
+            {
+                // 802.11 init.
+                shell_exec("cp -f ".$interfacesFilePersistence." /etc/network/interfaces");
+
+                shell_exec("sudo killall wpa_supplicant"); // stop WPA supplicant, if up.
+                shell_exec("sudo rm /var/run/wpa_supplicant/*"); // cleanings.
+                shell_exec("sudo /etc/init.d/network-manager stop; sleep 2"); // if GNOME Network Manager is up, stop it.
+
+                // Bring up 802.11 interface!
+                self::__setDhcpTimeout(30);
+                shell_exec("sudo ifup ".$networkInterfacePersistenceContent);
+            }
+
+
+    }
+
+
     public static function initNetwork() /* Void */
         {
-        //$runFile = "/tmp/iwk.inetRun";
+        $runFile = "/tmp/iwk.inetRun";
 
         // Try to initialize network with last used method (if any). Otherwise DHCP.
         // Only for the first run (operating system rebooted).
-        /*if (!file_exists($runFile))
-            {*/
+        if (!file_exists($runFile))
+            {
             // Persistence files to look at.
             $interfacesFilePersistence = "/iwk/interfaces";
             $dnsFilePersistence = "/iwk/resolv.conf";
@@ -65,8 +118,8 @@ class Network
                 shell_exec("sudo ifup ".$networkInterfacePersistenceContent);
                 }
 
-            //Utils::writeFile($runFile,"","777"); // write "executed-once" file.
-            //}
+            Utils::writeFile($runFile,"","777"); // write "executed-once" file.
+            }
         }
 
 
@@ -226,6 +279,7 @@ class Network
         $j = 0;
         $info = array();
 
+        self::resetNetwork();
         // Using GNOME Network Manager's nmcli.
         @shell_exec("sudo /etc/init.d/network-manager start");
 
