@@ -72,18 +72,20 @@ class Network
 
 
     public static function setNetwork(/* Strings */ $action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity) /* Boolean */
-        {
+    {
         $interfacesFile = "/etc/network/interfaces";
         $dnsFile = "/etc/resolv.conf";
+        $logFile = "/iwk/error.log";
 
         $interfacesFilePersistence = "/iwk/interfaces";
         $dnsFilePersistence = "/iwk/resolv.conf";
         $networkConnectionMethodPersistence = "/iwk/iwk.networkConnectionMethod";
         $networkInterfacePersistence = "/iwk/iwk.networkInterface";
 
+        Utils::writeFile($logFile,"antes de...\n","");
         self::__putInterfacesDown();
 
-        var_dump($action);
+        Utils::writeFile($logFile,$action,"");
 
         switch ($action)
             {
@@ -175,7 +177,7 @@ class Network
             }
 
         return true;
-        }
+    }
 
 
 
