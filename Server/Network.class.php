@@ -18,8 +18,8 @@ class Network
 
         // Try to initialize network with last used method (if any). Otherwise DHCP.
         // Only for the first run (operating system rebooted).
-        if (!file_exists($runFile))
-            {
+        /*if (!file_exists($runFile))
+            {*/
             // Persistence files to look at.
             $interfacesFilePersistence = "/iwk/interfaces";
             $dnsFilePersistence = "/iwk/resolv.conf";
@@ -66,7 +66,7 @@ class Network
                 }
 
             Utils::writeFile($runFile,"","777"); // write "executed-once" file.
-            }
+            //}
         }
 
 
@@ -82,7 +82,7 @@ class Network
         $networkConnectionMethodPersistence = "/iwk/iwk.networkConnectionMethod";
         $networkInterfacePersistence = "/iwk/iwk.networkInterface";
 
-        Utils::writeFile("/iwk/error.log","dentro de...setNetwork:".$action,"777");
+        //Utils::writeFile("/iwk/error.log","dentro de...setNetwork:".$action,"777");
         self::__putInterfacesDown();
 
         Utils::writeFile($logFile,$action,"");
