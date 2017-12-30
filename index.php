@@ -29,6 +29,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
     </style>
 
     <script type="text/javascript" src="JavaScript/Utils.object.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="JavaScript/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad:true"></script>
 
     <script type="text/javascript">
@@ -110,9 +111,13 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
             waitingState("on");
             document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión "+_action;
+            url = "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd);
 
+            $.get(url, function(data, status){
+                viewNetworkInfo();
+            });
 
-            dojo.xhr("GET", {
+            /*dojo.xhrGet({
                 url: "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd),
                 preventCache: true,
                 load: function(data,args)
@@ -124,7 +129,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                     {
                     viewNetworkInfo();
                     }
-                });
+                });*/
         }
 
         function viewNetworkInfo()
@@ -144,7 +149,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
                         }
                         else {
-                            //wifiNetworkList('');
+
                             waitingState("off");
                         }
                     }
