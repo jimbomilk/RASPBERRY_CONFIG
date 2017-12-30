@@ -83,6 +83,8 @@ class Network
 
         self::__putInterfacesDown();
 
+        var_dump($action);
+
         switch ($action)
             {
             case "dhcp":
