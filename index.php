@@ -106,7 +106,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
             }
 
         function networkSet(/* String */ action, /* String */ ip, /* String */ mask, /* String */ gateway, /* String */ dns, /* String */ ssid, /* String */ password, /* String */ security)
-            {
+        {
 
             waitingState("on");
             document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión...action:"+action+",ssid:"+ssid+",pass:"+password+",security:"+security;
@@ -119,13 +119,13 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                     {
                     viewNetworkInfo();
                     },
-                timeout: 32000,
+                timeout: 12000,
                 error: function(error,args)
                     {
                     viewNetworkInfo();
                     }
                 });
-            }
+        }
 
         function viewNetworkInfo()
             {
@@ -149,7 +149,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                         }
                     }
                 },
-                timeout: 30000,
+                timeout: 10000,
                 error: function(error,args) { ; }
                 });
             }
