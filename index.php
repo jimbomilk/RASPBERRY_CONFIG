@@ -111,7 +111,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
             waitingState("on");
             document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión "+_action;
-            url = "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd);
+            url = "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd);
 
             $.get(url, function(data, status){
                 viewNetworkInfo();
