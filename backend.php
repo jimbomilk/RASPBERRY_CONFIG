@@ -57,7 +57,7 @@ switch ($target)
         }
         else
         {
-
+            Utils::writeFile("/iwk/error.log","dentro de...action:".$action,"777");
             $netIP = strip_tags(trim($_GET['netIP']));
             $netMask = strip_tags(trim($_GET['netMask']));
             $netGateway = strip_tags(trim($_GET['netGateway']));
@@ -66,6 +66,7 @@ switch ($target)
             $netSSID = strip_tags(trim($_GET['netSSID']));
             $netPassword = strip_tags(trim($_GET['netPassword']));
             $netSecurity = strip_tags(trim($_GET['netSecurity']));
+            Utils::writeFile("/iwk/error.log","despues de...action:".$action,"777");
 
             Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
         }
