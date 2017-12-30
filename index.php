@@ -111,11 +111,11 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
             waitingState("on");
             document.getElementById('networkLog').innerHTML = "Por favor espere, iniciando conexión "+_action;
-            url = "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd);
+            url = "backend.php?target=connect&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security;
 
             $.get(url, function(data, status){
                 viewNetworkInfo();
-                alert("Data: " + data + "\nStatus: " + status);
+                //alert("Data: " + data + "\nStatus: " + status);
             });
 
             /*dojo.xhrGet({
@@ -256,8 +256,8 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
                          <p>Por favor seleccione su red e introduzca su clave:</p>
                          <p style="margin-top:20px;">
-                             <input id="netSSID" type="text" style="width:150px;" readonly> &nbsp;
-                             <input id="netSecurity" type="text" style="width:150px;" readonly> &nbsp;
+                             <input id="netSSID" type="text" style="width:150px;" > &nbsp;
+                             <input id="netSecurity" type="text" style="width:150px;" > &nbsp;
                              <input id="netPassword" type="text" style="width:250px;"> &nbsp; | &nbsp;
                              <a href="#." onClick="if (document.getElementById('netSSID').value!='') { networkSet('wifi','','','','',document.getElementById('netSSID').value,document.getElementById('netPassword').value,document.getElementById('netSecurity').value); }">conectar</a>
                          </p>
