@@ -105,7 +105,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                 });
             }
 
-        function networkSet(/* String */ action, /* String */ ip, /* String */ mask, /* String */ gateway, /* String */ dns, /* String */ ssid, /* String */ password, /* String */ security)
+        function networkSet(/* String */ _action, /* String */ ip, /* String */ mask, /* String */ gateway, /* String */ dns, /* String */ ssid, /* String */ password, /* String */ security)
         {
 
             waitingState("on");
@@ -113,7 +113,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
 
             dojo.xhr("GET", {
-                url: "backend.php?target=network&action="+action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd),
+                url: "backend.php?target=network&action="+_action+"&netIP="+ip+"&netMask="+mask+"&netGateway="+gateway+"&netDNS="+dns+"&netSSID="+encodeURIComponent(ssid)+"&netPassword="+encodeURIComponent(password)+"&netSecurity="+security+"&unlockPwd="+encodeURIComponent(unlockpwd),
                 preventCache: true,
                 load: function(data,args)
                     {
