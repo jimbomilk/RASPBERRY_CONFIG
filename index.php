@@ -48,11 +48,11 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
         // Grid layout.
         layoutWifiNetworks = [
-                         {name:'SSID', headerStyles:'text-align:center;', field:'ssid', styles:';', width:'40%'},
-                         {name:'BSSID', headerStyles:'text-align:center;', field:'bssid', styles:';', width:'30%'},
-                         {name:'Rate', headerStyles:'text-align:center;', field:'rate', styles:';'},
-                         {name:'Security', headerStyles:'text-align:center;', field:'security', styles:';'},
-                         {name:'Signal', headerStyles:'text-align:center;', field:'signal', styles:';'}
+                         {name:'Identificador', headerStyles:'text-align:center;', field:'ssid', styles:';', width:'40%'},
+                         {name:'Dirección', headerStyles:'text-align:center;', field:'bssid', styles:';', width:'30%'},
+                         {name:'Frecuencia', headerStyles:'text-align:center;', field:'rate', styles:';'},
+                         {name:'Seguridad', headerStyles:'text-align:center;', field:'security', styles:';'},
+                         {name:'Señal', headerStyles:'text-align:center;', field:'signal', styles:';'}
                          ];
 
         dojo.addOnLoad(function()
@@ -132,15 +132,22 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                 url: "backend.php?target=network&action=info",
                 preventCache: true,
                 load: function(data,args)
-                    {
-                    if (data!="")
-                        {
+                {
+                    if (data!="") {
                         document.getElementById('networkLog').innerHTML = data;
-                        document.getElementById('networkTabLeft').style.display = "none";
-                        window.setTimeout("document.location.href='settings.php';",8000);
+
+                        // Autostart on Internet connection OK, go to (other) settings page.
+                        if (Utils.strpos(data, "conectada") > 0 || Utils.strpos(data, "running") > 0) {
+                            document.getElementById('networkTabLeft').style.display = "none";
+                            window.setTimeout("document.location.href='settings.php';", 8000);
 
                         }
-                    },
+                        else {
+                            wifiNetworkList('');
+                            waitingState("off");
+                        }
+                    }
+                },
                 timeout: 30000,
                 error: function(error,args) { ; }
                 });
@@ -172,15 +179,12 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
     <div id="content" style="height:100%;">
          <div dojoType="dijit.layout.TabContainer" style="height:100%;">
              <!-- NETWORK TAB -->
-             <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Network settings</strong>" refreshOnShow="false" style="padding:15px;">
+             <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Configuración de red</strong>" refreshOnShow="false" style="padding:15px;">
                  <div id="networkLog" class="title">
                      Espere por favor, inicializando red...
                  </div>
 
                  <div id="networkTabLeft">
-                     <div>Ip: <?php $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
-                         $localIP = exec ($command);
-                         echo $localIP?></div>
                      <!-- Wired network settings - DHCP/Static -->
                      <div class="title">
                          <img src="Images/Window-remote-desktop-icon.png" style="vertical-align:middle; padding-right:10px;">
@@ -248,7 +252,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                              <input id="netSSID" type="text" style="width:150px;" readonly> &nbsp;
                              <input id="netSecurity" type="text" style="width:150px;" readonly> &nbsp;
                              <input id="netPassword" type="text" style="width:250px;"> &nbsp; | &nbsp;
-                             <a href="#." onClick="if (document.getElementById('netSSID').value!='') { networkSet('wifi','','','','',document.getElementById('netSSID').value,document.getElementById('netPassword').value,document.getElementById('netSecurity').value); }">connect</a>
+                             <a href="#." onClick="if (document.getElementById('netSSID').value!='') { networkSet('wifi','','','','',document.getElementById('netSSID').value,document.getElementById('netPassword').value,document.getElementById('netSecurity').value); }">conectar</a>
                          </p>
                      </div>
                  </div>

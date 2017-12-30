@@ -8,50 +8,22 @@ function __autoload($className)
 
 $target = strip_tags(trim($_GET['target']));
 
-// **************************************************************************************************************************
 
-// User inserted password (cleartext).
-$unlockPwd = strip_tags(trim($_GET['unlockPwd']));
-
-// Saved password.
-if (file_exists("/iwk/iwk.adminPasswd")) // it always exists.
-    {
-    // Read saved password (hashed).
-    $unlockPwdHashSaved = trim(file_get_contents("/iwk/iwk.adminPasswd"));
-    }
-
-// Enable modify if inserted password (hashed) matches saved password or saved password = "no-passwd" (disabled).
-if (trim(md5($unlockPwd))==$unlockPwdHashSaved || trim(md5("no-passwd"))==$unlockPwdHashSaved) $MODIFY_ENABLED = true;
-else $MODIFY_ENABLED = false;
 
 // **************************************************************************************************************************
 
 switch ($target)
     {
-    case "modifyPasword":
-        if ($MODIFY_ENABLED)
-            {
-            $newPassword = strip_tags(trim($_GET['newPassword']));
 
-            if ($newPassword)
-                {
-                if (Misc::modifyPassword($newPassword)) echo "Password changed.";
-                else echo "Error changing password.";
-                }
-            else echo "Error changing password.";
-            }
-        break;
 
 
     case "locale":
-        if ($MODIFY_ENABLED)
-            {
             $language = strip_tags(trim($_GET['lang']));
             if (!Locale::setLocale($language))
-                {
-                echo "Error setting language.";
-                }
+            {
+            echo "Error setting language.";
             }
+
         break;
 
 
@@ -82,10 +54,6 @@ switch ($target)
             {
             Network::initNetwork();
             }
-        else if ($action=="wifi-disconnect")
-            {
-            if ($MODIFY_ENABLED) Network::wifiDisconnect(); // unused.
-            }
         else
             {
             $netIP = strip_tags(trim($_GET['netIP']));
@@ -97,7 +65,7 @@ switch ($target)
             $netPassword = strip_tags(trim($_GET['netPassword']));
             $netSecurity = strip_tags(trim($_GET['netSecurity']));
 
-            if ($MODIFY_ENABLED) Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
+            Network::setNetwork($action,$netIP,$netMask,$netGateway,$netDNS,$netSSID,$netPassword,$netSecurity);
             }
         break;
 
@@ -116,13 +84,13 @@ switch ($target)
 
         if ($action=="rotate")
             {
-            if ($MODIFY_ENABLED) Misc::videoRotate(strip_tags(trim($_GET['rotation'])));
+            Misc::videoRotate(strip_tags(trim($_GET['rotation'])));
             }
         break;
 
 
     case "sound":
-        if ($MODIFY_ENABLED) Misc::setSound();
+        Misc::setSound();
         break;
 
 
@@ -130,24 +98,18 @@ switch ($target)
         $action = strip_tags(trim($_GET['action']));
         $toggle = strip_tags(trim($_GET['toggle']));
 
-        if ($MODIFY_ENABLED)
-            {
-            if ($action=="makeHomePersistent")
-                Misc::makeBrowserHomePersistent($toggle);
-            }
+
+        if ($action=="makeHomePersistent")
+            Misc::makeBrowserHomePersistent($toggle);
+
         break;
 
 
     case "strictKiosk":
-        if ($_GET['directStart']=="y") $MODIFY_ENABLED = true;
-        if ($MODIFY_ENABLED) 
-            {
-            Misc::setStrickKioskMode($_GET['url'],$_GET['token'],$_GET['timeout'],$_GET['cache'],$_GET['keyboard'],$_GET['pageReload'],$_GET['haltAt'],$_GET['blankingTime'],$_GET['disableInput'],$_GET['proxy']);
-            }
+        Misc::setStrickKioskMode($_GET['url'],$_GET['token'],$_GET['timeout'],$_GET['cache'],$_GET['keyboard'],$_GET['pageReload'],$_GET['haltAt'],$_GET['blankingTime'],$_GET['disableInput'],$_GET['proxy']);
         break;
 
     case "location":
-
         if (Misc::changeScreenLocation(strip_tags(trim($_GET['screenLocation'])))) echo "Código actualizado.";
         else echo "Error al actualizar el código.";
         break;

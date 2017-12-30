@@ -18,6 +18,9 @@
     $iwkPageReloadTimeout = (int)file_get_contents("/iwk/iwk.strictKioskReloadPageTimer");
 
     // Video rotation info.
+    $iwkVideoRotationLeft="";
+    $iwkVideoRotationRight="";
+    $iwkVideoRotationReverse="";
     $iwkVideoRotationHow = file_get_contents("/iwk/iwk.screenRotate");
     if (!$iwkVideoRotationHow || trim($iwkVideoRotationHow)=="normal") $iwkVideoRotationNormal = "checked";
     if (trim($iwkVideoRotationHow)=="left") $iwkVideoRotationLeft = "checked";
@@ -31,7 +34,8 @@
     else $iwkVirtualKeyboardFileOff = "checked";
 
     // Proxy.
-    $iwkAppProxy = trim(file_get_contents("/iwk/iwk.applicationProxy"));
+    if(file_get_contents("/iwk/iwk.applicationProxy")!=null)
+        $iwkAppProxy = trim(file_get_contents("/iwk/iwk.applicationProxy"));
 
     // System halt time.
     /*if (file_exists("/iwk/iwk.systemHaltAt")) $iwkSystemHaltContent = trim(file_get_contents("/iwk/iwk.systemHaltAt"));
