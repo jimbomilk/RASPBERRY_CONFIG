@@ -116,6 +116,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
 
             $.get(url, function(data, status){
                 viewNetworkInfo();
+                alert("Data: " + data + "\nStatus: " + status);
             });
 
             /*dojo.xhrGet({
