@@ -14,7 +14,7 @@ class Network
 
     public static function initNetwork() /* Void */
         {
-        $runFile = "/tmp/iwk.inetRun";
+        //$runFile = "/tmp/iwk.inetRun";
 
         // Try to initialize network with last used method (if any). Otherwise DHCP.
         // Only for the first run (operating system rebooted).
@@ -65,7 +65,7 @@ class Network
                 shell_exec("sudo ifup ".$networkInterfacePersistenceContent);
                 }
 
-            Utils::writeFile($runFile,"","777"); // write "executed-once" file.
+            //Utils::writeFile($runFile,"","777"); // write "executed-once" file.
             //}
         }
 
