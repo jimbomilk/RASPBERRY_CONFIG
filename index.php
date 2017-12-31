@@ -146,7 +146,7 @@ if ($unlockPwdHashSaved==trim(md5("no-passwd"))) */$passwordDisabled = true;
                         // Autostart on Internet connection OK, go to (other) settings page.
                         if (Utils.strpos(data, "conectada") > 0 || Utils.strpos(data, "running") > 0) {
                             document.getElementById('networkTabLeft').style.display = "none";
-                            window.setTimeout("document.location.href='settings.php';", 8000);
+                            window.setTimeout("document.location.href='settings.php';", 15000);
 
                         }
                         else {
