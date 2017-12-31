@@ -281,7 +281,7 @@ class Network
 
         self::resetNetwork();
         // Using GNOME Network Manager's nmcli.
-        @shell_exec("sudo /etc/init.d/network-manager start");
+        @shell_exec("sudo  /etc/init.d/network-manager start");
 
         $netStatus = shell_exec("sudo nmcli dev status; sleep 3;");
         $networksData = shell_exec("sudo nmcli -f SSID,MODE,BSSID,FREQ,RATE,SIGNAL,SECURITY dev wifi"); // nmcli makes use of all available network adapters (allows duplicates!).
