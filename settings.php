@@ -220,7 +220,7 @@
             else
                 {
                 var toggle = "off";
-                if (!confirm("Replace your own Chrome settings with default ones? "))
+                if (!confirm("Replace  your own Chrome settings with default ones? "))
                     return false;
                 }
 
