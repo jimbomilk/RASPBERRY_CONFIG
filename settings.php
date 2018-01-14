@@ -63,7 +63,7 @@
 <head>
     <title>Addmeetoo - settings</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="Author" content="ing. Marco Buratto, ing.marcoburatto@gmail.com">
+    <meta name="Author" content="jmgarciacarrasco@gmail.com">
     <meta name="Comment" content="This is a dirty no-framework, js-in-pages quick and fast coding style.">
 
     <link type="text/css" href="Styles/standard.css" rel="stylesheet">
@@ -353,7 +353,7 @@
     <div id="content" style="height:auto;">
         <div style="height:100%;">
              <!-- DIGITAL SIGNAGE TAB -->
-             <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Digital signage</strong>" refreshOnShow="false" style="padding:15px;">
+             <div dojoType="dijit.layout.ContentPane" href="" title="<strong>Configuración Addmeetoo</strong>" refreshOnShow="false" style="padding:15px;">
                  <div id="KioskModeTabContent1"></div>
                  <div id="KioskModeTabContent2">
                      <div>
